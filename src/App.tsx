@@ -16,9 +16,12 @@ import Routers from './router/routers';
 function App() {
   return (
     <React.StrictMode>
+      <div className='h-full'>
+
     <BrowserRouter>
     <Routers />
   </BrowserRouter>
+      </div>
   </React.StrictMode>
   );
 }
