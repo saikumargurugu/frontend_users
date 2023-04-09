@@ -1,51 +1,71 @@
 import React from "react";
-import Form from "./form/forms";
+import Form from "../components/form/forms";
+import { useNavigate } from 'react-router-dom';
+
 
 const UserCreate=()=> {
+  const navigate = useNavigate();
   const userInputForm = [
     {
       inputType: "text",
       label: "First Name",
-      key: "firstName",
+      keyStr: "firstName",
       value: "",
   },
   {
     inputType: "text",
     label: "Last Name",
-    key: "lastName",
+    keyStr: "lastName",
     value: "",
   },    {
     inputType: "number",
     label: "Age",
-    key: "age",
+    keyStr: "age",
     value: "",
 },    {
-  inputType: "text",
+  inputType: "email",
   label: "Email",
-  key: "email",
+  keyStr: "email",
   value: "",
 },    {
-  inputType: "text",
-  label: "Email",
-  key: "email",
-  value: "",
-},    {
-  inputType: "text",
+  inputType: "tel",
   label: "Phone",
-  key: "phoneNumber",
+  keyStr: "phoneNumber",
   value: "",
 },    {
-  inputType: "Switch",
+  inputType: "switch",
   label: "Admin Access",
-  key: "isAdmin",
+  keyStr: "isAdmin",
   value: "",
 }
   ]
+  const createUser= (data)=> {
+    goToHome()
+  }
+  const goToHome= ()=> {
+    navigate("/users");
+  }
 
-
+  const formActions = [
+    {
+      label: "Create",
+      action: "ApiCall",
+      endpoint: "/",
+      clickAction: createUser,
+      type: "primary",
+      redirectUrl: "/"
+    },
+    {
+      label: "Cancle",
+      action: "redirect",
+      type: "secondry",
+      redirectUrl: "/",
+      clickAction:goToHome
+    }
+  ]
   return (
     <div className="mt-14">
-      <Form formSchema={userInputForm} />
+      <Form formSchema={userInputForm} formActions={formActions} />
     </div>
   );
 }

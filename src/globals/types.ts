@@ -1,10 +1,21 @@
 import React from "react"
 type NavItemType={
- path: String,
- lable:String,
+ path: string,
+ lable: string,
  component: React.Component
 
 }
 
 
-export type {NavItemType}
+type buttonItem= {
+    label: string,
+    clickAction: ()=>void,
+    type?: string
+  }
+
+
+
+export type {
+    NavItemType,
+    buttonItem
+}
