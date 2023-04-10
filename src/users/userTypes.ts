@@ -18,6 +18,12 @@ type buttonFormItem= {
   redirectUrl?: string
 }
 
+type UserDeleteProps= {
+  closeAction: ()=>void,
+  saveAction: ()=>void,
+  contnetText: string   
+}
+
 type formActionsTypes = [buttonFormItem]
 
 
@@ -39,5 +45,6 @@ export type {
   buttonFormItem,
   formActionsTypes,
   inputSwitchProps,
+  UserDeleteProps,
   formSchema
 }
