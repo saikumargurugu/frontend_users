@@ -51,17 +51,13 @@ const UserListTable = (props: ListProps) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((item: item) => (
+          {data&& data.length>0 &&data?.map((item: item) => (
             <tr className="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
               {tableHeaders.map((heading: heading) => (
                 <td className="px-6 py-4">
-                  {heading.key}
                   {getValues(heading.key, item)}
                 </td>
               ))}
-              <td>
-                <p>{URL}</p>
-              </td>
               <td className="px-6 py-4 flex justify-between items-center">
                <Link
                   to={"users/edit/"+item.id}
@@ -69,9 +65,6 @@ const UserListTable = (props: ListProps) => {
                 >
                   Edit
                 </Link>
-                {/* <button className="block text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800" type="button">
-                Delete
-            </button> */}
                   <Button label="Delete" type="danger" clickAction={()=>handleDeleteClick(item)} />
                 {deleteModal&&<UserDelete 
                 contnetText="Are you sure do you want to delete selected user"

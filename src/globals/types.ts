@@ -15,23 +15,34 @@ type buttonItem= {
 
 type PostApiCallTypes= {
   url: string,
-  data: Object,
+  data?: Object,
+  headders: Object
 }
+
+type reponseTypes= {
+  data: Object
+}
+
 
 
 type GetApiCallTypes= {
   url: string,
+  headders: Object,
   filters?: any
 }
 
 type PatchApiCallTypes = PostApiCallTypes
 
-type DeleteApiCallTypes= {url: string}
+type DeleteApiCallTypes= {
+  url: string,
+  headders: Object
+}
 
 type MakeCallTypes= {
   url: string,
-  data?:string,
-  filters?:string,
+  data?: Object,
+  method: string,
+  filters?: any,
   [x: string | number | symbol]: any; //allows any other type of proporites
 }
 
@@ -41,6 +52,7 @@ export type {
     MakeCallTypes,
     PostApiCallTypes,
     PatchApiCallTypes,
+    reponseTypes,
     GetApiCallTypes,
     DeleteApiCallTypes
 }
