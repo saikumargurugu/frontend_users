@@ -59,7 +59,7 @@ const Form = (props: formProps) => {
     });
     
     setErrors(newErrors);
-    if (!(Object.keys(formSchema).length > 0)) {
+    if (!(Object.keys(formSchema).length === 0)) {
       action.clickAction(formData);
     }
     return;

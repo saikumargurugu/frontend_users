@@ -10,12 +10,8 @@ import {
 
 const PostApi = (props: PostApiCallTypes) => {
     const returnData:reponseTypes={'data':{}}
-    const apiDataObj={
-        url: props.url,
-        methd: "post",
-        data: props.data
-    }
-  api(apiDataObj).then(
+    console.log(props);
+  api({...props,method:"POST"}).then(
       resp=>{
         returnData.data= resp
       }
@@ -41,14 +37,22 @@ const GetApi = async (props: GetApiCallTypes) => {
   return returnData
 };
 
-const DeleteApi = (props: DeleteApiCallTypes) => {
-  console.log(props);
+const DeleteApi = async (props: DeleteApiCallTypes) => {
+  const returnData:reponseTypes={'data':{}}
+  await api({...props,method:"DELETE"}).then(
+    resp=>{
+      returnData.data= resp
+    }
+)
+return returnData
 };
 
 export const MakeCall = (props: MakeCallTypes) => {
   const BACKEND_BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL;
   const APIurl: string = BACKEND_BASE_URL + props.url;
   const headders = {};
+  console.log(props.method.toUpperCase());
+  
   if (props.method.toUpperCase() === "POST") {
     return PostApi({
       url: APIurl,

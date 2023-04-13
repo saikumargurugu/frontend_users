@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { MakeCall } from "../../axios/axios";
 import Button from "../../components/button/button";
 import UserDelete from "../userDelete";
 
@@ -33,6 +34,10 @@ const UserListTable = (props: ListProps) => {
   }
   const deleteUser =()=>{
     console.log(selctedUser);
+    MakeCall({
+      url:`/users/${selctedUser.id}`,
+      method:'DELETE'
+    })
   }
 
   return (

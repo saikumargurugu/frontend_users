@@ -1,6 +1,7 @@
 import React from "react";
 import Form from "../components/form/forms";
 import { useNavigate } from 'react-router-dom';
+import { MakeCall } from "../axios/axios";
 
 
 const UserCreate=()=> {
@@ -39,8 +40,15 @@ const UserCreate=()=> {
   value: "",
 }
   ]
-  const createUser= (data)=> {
-    goToHome()
+  const createUser= async(data)=> {
+    console.log("innnnnnnnnn");
+    const req= await MakeCall({
+      data:data,
+      url:'/users/',
+      method: "POST",
+    })
+    console.log(req);
+    // goToHome() 
   }
   const goToHome= ()=> {
     navigate("/users");
