@@ -1,19 +1,19 @@
 import React from 'react'
-import { Route, Routes, Link } from "react-router-dom";
-import { UserList } from '../users';
-import UserCreate from '../users/userCreate';
+import { Route, Routes } from "react-router-dom";
 import NavBar from '../Navigation/navBar';
+import { navRoutes } from '../Navigation/routes';
+
 function Routers() {
 
   return (
-    <>
+    <div className="flex flex-col h-screen overflow-y-auto bg-white border-b dark:bg-gray-900">
     <NavBar />
       <Routes>
-        <Route path="/" element={<> </>}/>
-        <Route path="users" element={<UserList />}/>
-        <Route path="users/create" element={<UserCreate />}/>
-    </Routes>
-    </>
+          {navRoutes.map((navItem:any)=>(
+          <Route path={navItem.path} element={navItem.component}/>
+          ))}
+      </Routes>
+    </div>
    
   )
 }

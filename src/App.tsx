@@ -1,25 +1,17 @@
-import React from 'react';
-import './App.css';
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-  createRoutesFromElements,
-  Route,
-  BrowserRouter,
-  Routes
-} from "react-router-dom";
-import { UserList, UserCreate } from './users';
-import Routers from './router/routers';
-
+import React from "react";
+import "./App.css";
+import { BrowserRouter } from "react-router-dom";
+import Routers from "./router/routers";
 
 function App() {
   return (
     <React.StrictMode>
-    <BrowserRouter>
-    <Routers />
-  </BrowserRouter>
-  </React.StrictMode>
+      <div className="h-full">
+        <BrowserRouter>
+          <Routers />
+        </BrowserRouter>
+      </div>
+    </React.StrictMode>
   );
 }
 
