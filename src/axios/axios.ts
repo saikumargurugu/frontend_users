@@ -48,7 +48,7 @@ return returnData
 };
 
 export const MakeCall = (props: MakeCallTypes) => {
-  const BACKEND_BASE_URL = process.env.REACT_APP_BACKEND_BASE_URL;
+  const BACKEND_BASE_URL = localStorage.getItem('backendURL')? localStorage.getItem('backendURL'):process.env.REACT_APP_BACKEND_BASE_URL;
   const APIurl: string = BACKEND_BASE_URL + props.url;
   const headders = {};
   console.log(props.method.toUpperCase());
