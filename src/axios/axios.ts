@@ -8,14 +8,20 @@ import {
   PostApiCallTypes,
 } from "../globals/types";
 
-const PostApi = (props: PostApiCallTypes) => {
+const PostApi = async (props: PostApiCallTypes) => {
     const returnData:reponseTypes={'data':{}}
-    console.log(props);
-  api({...props,method:"POST"}).then(
-      resp=>{
-        returnData.data= resp
+    const apiDataObj={
+      methd: "post",
+      url:props.url,
+      data:props.data,
+      headers:{
+        "Content-Type": "multipart/form-data",
       }
-  )
+  }
+  console.log(props);
+  await api(apiDataObj).then((res)=>{
+    returnData.data=returnData
+  })
   return returnData
 };
 
@@ -27,7 +33,7 @@ const GetApi = async (props: GetApiCallTypes) => {
     const returnData:reponseTypes={'data':{}}
     const apiDataObj={
         url: props.url,
-        methd: "post",
+        methd: "GET",
     }
   await api(apiDataObj).then(
       resp=>{
@@ -52,11 +58,13 @@ export const MakeCall = (props: MakeCallTypes) => {
   const APIurl: string = BACKEND_BASE_URL + props.url;
   const headders = {};
   console.log(props.method.toUpperCase());
+  console.log(props.method.toUpperCase() === "POST");
   
   if (props.method.toUpperCase() === "POST") {
     return PostApi({
       url: APIurl,
       data: props.data,
+      method:"POST",
       headders: headders,
     });
   }
@@ -71,6 +79,7 @@ export const MakeCall = (props: MakeCallTypes) => {
     return PatchApi({
       url: APIurl,
       data: props.data,
+      method: "PATCH",
       headders: headders,
     });
   }

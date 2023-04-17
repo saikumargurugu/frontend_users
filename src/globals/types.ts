@@ -16,6 +16,7 @@ type buttonItem= {
 type PostApiCallTypes= {
   url: string,
   data?: Object,
+  method: "POST"|"PATCH",
   headders: Object
 }
 
