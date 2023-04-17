@@ -11,7 +11,7 @@ import {
 const PostApi = async (props: PostApiCallTypes) => {
     const returnData:reponseTypes={'data':{}}
     const apiDataObj={
-      methd: "post",
+      method: "POST",
       url:props.url,
       data:props.data,
       headers:{
@@ -20,6 +20,7 @@ const PostApi = async (props: PostApiCallTypes) => {
   }
   console.log(props);
   await api(apiDataObj).then((res)=>{
+    console.log(res);
     returnData.data=returnData
   })
   return returnData

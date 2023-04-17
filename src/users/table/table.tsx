@@ -27,7 +27,13 @@ const UserListTable = (props: ListProps) => {
 
   const [deleteModal, setDeleteModal] = useState<boolean>(false);
   const [selctedUser, setSelctedUser] = useState<Object>({});
-  const getValues = (key: string, data: Record<string, any>) => data[key];
+  const getValues = (key: string, data: Record<string, any>) => {
+    if(key==="location"&& data[key]){
+      const locstr:string = `${Object.values(data[key]).map(a=>a+"")}`
+      return locstr
+    }
+    return data[key];
+  }
   const handleDeleteClick= (user:Object) => {
     setDeleteModal(!deleteModal)
     setSelctedUser(user)

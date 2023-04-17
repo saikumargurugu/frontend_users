@@ -10,14 +10,14 @@ export const navRoutes = [
     component: <UserList/>
   },
   {
-    path: "/users/",
-    lable: "Users List",
+    path: "/jobs/",
+    lable: "Job List",
     component: <UserList/>
 
   },
   {
     path: "/users/create",
-    lable: "Add User",
+    lable: "Add Job",
     component: <UserCreate/>
   },
 ];

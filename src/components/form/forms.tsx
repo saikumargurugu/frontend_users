@@ -14,7 +14,7 @@ const Form = (props: formProps) => {
     const data: any = {};
     formSchema.forEach((item: inputItem) => {
       data[item.keyStr] = "";
-      if(item.inputType==="switch"||item.inputType==="checkbox"){
+      if (item.inputType === "switch" || item.inputType === "checkbox") {
         data[item.keyStr] = false;
       }
     });
@@ -22,25 +22,28 @@ const Form = (props: formProps) => {
   }, [formSchema]);
 
   const onValueChange = (keyStr: string, value: any) => {
-    const newErrors = errors
+    const newErrors = errors;
     setFormData({
       ...formData,
       [keyStr]: value,
     });
-    if (newErrors[keyStr]){
-      delete newErrors[keyStr]
+    if (newErrors[keyStr]) {
+      delete newErrors[keyStr];
     }
-    setErrors(newErrors)
+    setErrors(newErrors);
   };
 
   const handleSubmit = (action: buttonFormItem) => {
-    if(action.action==='redirect'){
+    if (action.action === "redirect") {
       action.clickAction();
       return;
     }
     let newErrors = errors;
-    formSchema.forEach((item) => {      
-      if (!formData[item.keyStr]&& !(item.inputType==="switch" || item.inputType==="checkbox")) {
+    formSchema.forEach((item) => {
+      if (
+        !formData[item.keyStr] &&
+        !(item.inputType === "switch" || item.inputType === "checkbox")
+      ) {
         newErrors = {
           ...newErrors,
           [item.keyStr]: `${item.label} is required`,
@@ -57,7 +60,7 @@ const Form = (props: formProps) => {
         };
       }
     });
-    
+
     setErrors(newErrors);
     if (!(Object.keys(formSchema).length === 0)) {
       action.clickAction(formData);
@@ -78,20 +81,44 @@ const Form = (props: formProps) => {
         </h1>
       </div>
       <form>
-        <div className="md:grid md:grid-cols-2 sm:flex gap-4 m-auto p-6 justify-center dark:bg-gray-900 bg-white border-2 ">
+        <div className="md:grid md:grid-cols-2 sm:flex gap-4 m-auto p-6 justify-center dark:bg-gray-900 bg-white  ">
           {formSchema.map((item: inputItem) => (
-            <div className="flex flex-col">
-              <Inputs
-                inputItem={{ ...item, value: formData[item.keyStr] }}
-                onValueChange={onValueChange}
-              />
-              {errors[item.keyStr] && (
-                <p className="mt-2 text-sm text-red-600 dark:text-red-500">
-                  <span className="font-medium">*</span>
-                  {errors[item.keyStr]}
-                </p>
+            <>
+              {item.inputType !== "address" && (
+                <div className="flex flex-col">
+                  <Inputs
+                    inputItem={{ ...item, value: formData[item.keyStr] }}
+                    onValueChange={onValueChange}
+                  />
+                  {errors[item.keyStr] && (
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                      <span className="font-medium">*</span>
+                      {errors[item.keyStr]}
+                    </p>
+                  )}
+                </div>
               )}
-            </div>
+            </>
+          ))}
+        </div>
+        <div className="flex w-full m-auto p-6 justify-center dark:bg-gray-900 bg-white  ">
+          {formSchema.map((item: inputItem) => (
+            <>
+              {item.inputType === "address" && (
+                <div className="flex w-full flex-col">
+                  <Inputs
+                    inputItem={{ ...item, value: formData[item.keyStr] }}
+                    onValueChange={onValueChange}
+                  />
+                  {errors[item.keyStr] && (
+                    <p className="mt-2 text-sm text-red-600 dark:text-red-500">
+                      <span className="font-medium">*</span>
+                      {errors[item.keyStr]}
+                    </p>
+                  )}
+                </div>
+              )}
+            </>
           ))}
         </div>
       </form>
