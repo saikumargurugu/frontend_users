@@ -43,10 +43,13 @@ const UserCreate=()=> {
       method: "POST",
     })
     console.log(req);
-    // goToHome() 
+    
+    if (req.data.status===200){
+    goToHome() 
+  }
   }
   const goToHome= ()=> {
-    navigate("/users");
+    navigate("/jobs/");
   }
 
   const formActions = [

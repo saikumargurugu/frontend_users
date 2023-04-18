@@ -1,4 +1,5 @@
 import React from "react";
+import Home from "../Home/home";
 import { UserList, UserCreate } from "../users";
 
 
@@ -7,7 +8,7 @@ export const navRoutes = [
   {
     path: "/",
     lable: "Home",
-    component: <UserList/>
+    component: <Home/>
   },
   {
     path: "/jobs/",

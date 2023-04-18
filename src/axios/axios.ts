@@ -21,7 +21,7 @@ const PostApi = async (props: PostApiCallTypes) => {
   console.log(props);
   await api(apiDataObj).then((res)=>{
     console.log(res);
-    returnData.data=returnData
+    returnData.data=res
   })
   return returnData
 };
