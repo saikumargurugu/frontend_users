@@ -2,7 +2,7 @@ import React from "react";
 import { inputItem } from "../../../users/userTypes";
 
 const TextAreaInput = (itemProps: inputItem) => {
-  const { value, inputType, keyStr, label, onValueChange } = itemProps;
+  const { value, keyStr, label, onValueChange } = itemProps;
 
   const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>): void =>
     onValueChange(keyStr, event.target.value);

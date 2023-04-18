@@ -1,4 +1,3 @@
-import { stringify } from "querystring";
 import React, { useState } from "react";
 import { inputItem } from "../../../users/userTypes";
 
@@ -19,7 +18,7 @@ type AddType={
   type Key = string | "Street"|"Country"|"PostCode"| "City" | "State"
 
 const Address = (itemProps: inputItem) => {
-  const { value, inputType, keyStr, label, onValueChange } = itemProps;
+  const {  inputType, keyStr,  onValueChange } = itemProps;
   const [address,setAddress]= useState<AddObjType>({})
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>,key:Key): void =>
   {
