@@ -9,34 +9,29 @@ const UserCreate=()=> {
   const userInputForm = [
     {
       inputType: "text",
-      label: "First Name",
-      keyStr: "firstName",
+      label: "Job Title",
+      keyStr: "jobTitle",
       value: "",
   },
   {
-    inputType: "text",
-    label: "Last Name",
-    keyStr: "lastName",
+    inputType: "textArea",
+    label: "Job Description",
+    keyStr: "jobDescription",
     value: "",
-  },    {
-    inputType: "number",
-    label: "Age",
-    keyStr: "age",
-    value: "",
-},    {
+  },  {
   inputType: "email",
-  label: "Email",
-  keyStr: "email",
+  label: "Contanct Email",
+  keyStr: "contanctEmail",
   value: "",
 },    {
   inputType: "tel",
-  label: "Phone",
-  keyStr: "phoneNumber",
+  label: "Contanct Phone",
+  keyStr: "contantNumber",
   value: "",
 },    {
-  inputType: "switch",
-  label: "Admin Access",
-  keyStr: "isAdmin",
+  inputType: "address",
+  label: "Location",
+  keyStr: "location",
   value: "",
 }
   ]
@@ -44,14 +39,17 @@ const UserCreate=()=> {
     console.log("innnnnnnnnn");
     const req= await MakeCall({
       data:data,
-      url:'/users/',
+      url:'/jobs/',
       method: "POST",
     })
     console.log(req);
-    // goToHome() 
+    
+    if (req.data.status===200){
+    goToHome() 
+  }
   }
   const goToHome= ()=> {
-    navigate("/users");
+    navigate("/jobs/");
   }
 
   const formActions = [
