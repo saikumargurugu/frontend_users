@@ -18,9 +18,7 @@ const PostApi = async (props: PostApiCallTypes) => {
         "Content-Type": "multipart/form-data",
       }
   }
-  console.log(props);
   await api(apiDataObj).then((res)=>{
-    console.log(res);
     returnData.data=res
   })
   return returnData
@@ -57,10 +55,7 @@ return returnData
 export const MakeCall = (props: MakeCallTypes) => {
   const BACKEND_BASE_URL = localStorage.getItem('backendURL')? localStorage.getItem('backendURL'):process.env.REACT_APP_BACKEND_BASE_URL;
   const APIurl: string = BACKEND_BASE_URL + props.url;
-  const headders = {};
-  console.log(props.method.toUpperCase());
-  console.log(props.method.toUpperCase() === "POST");
-  
+  const headders = {};  
   if (props.method.toUpperCase() === "POST") {
     return PostApi({
       url: APIurl,

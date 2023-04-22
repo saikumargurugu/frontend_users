@@ -36,13 +36,11 @@ const UserCreate=()=> {
 }
   ]
   const createUser= async(data)=> {
-    console.log("innnnnnnnnn");
     const req= await MakeCall({
       data:data,
       url:'/jobs/',
       method: "POST",
     })
-    console.log(req);
     
     if (req.data.status===200){
     goToHome() 

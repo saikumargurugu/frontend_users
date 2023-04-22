@@ -39,13 +39,14 @@ const UserListTable = (props: ListProps) => {
     setSelctedUser(user)
   }
   const deleteUser =async ()=>{
-    console.log(selctedUser);
    const rese=await MakeCall({
       url:`/jobs/${selctedUser.id}`,
       method:'DELETE'
     })
+    if (rese) {
     window.location.reload()
   }
+}
 
   return (
     <div className="overflow-x-auto m-6 shadow-md overflow-y-auto sm:rounded-lg">
