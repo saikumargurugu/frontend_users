@@ -22,13 +22,8 @@ const Address = (itemProps: inputItem) => {
   const [address,setAddress]= useState<AddObjType>({})
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>,key:Key): void =>
   {
-    console.log(key);
-    
     setAddress({...address,[key]:event.target.value})
-    onValueChange(keyStr, address);
-    console.log(address);
-    
-
+    onValueChange(keyStr, address);    
   }
 
 
