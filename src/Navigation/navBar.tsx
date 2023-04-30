@@ -14,7 +14,7 @@ const NavBar=() => {
               alt="Flowbite Logo"
             />
             <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              User Management
+              Job Management
             </span>
           </div>
           <div className="flex  md:order-2 cursor-pointer">
